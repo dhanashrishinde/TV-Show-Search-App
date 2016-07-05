@@ -1,0 +1,45 @@
+
+<div class="container" style="color:white">
+	<div class="page-header">
+		<h2>{{ show.name }}</h2>
+			<small ng-repeat="g in show.genres" > {{g}} {{$last ? '' : '| '}}</small>
+	</div> 
+
+			<div class="row">
+					<div class="col-xs-4 col-sm-3">						
+						<img src="{{show.image.medium}}" /> 
+						<img ng-if="show.image.medium == null" src="views\default\default_show.png"/>
+					</div>
+					<div class="col-xs-4 col-sm-8">
+						<div class="page-header">
+							<h3 class="page-header">Summary</h3>
+							<p style="font-size:140%" ng-bind-html = "show.summary | trustHTML"></p>
+							<h3 class="page-header">Cast</h3>
+							<div class="row"  ng-repeat="c in show._embedded.cast" >
+            					<div class="col-xs-12">
+                					<div class="panel panel-default">
+                    					<div class="panel-heading" >
+                        					<div class="panel-title" >
+                        						<div class="row" >
+													<div class="col-xs-3 col-sm-3">
+														<img ng-if="c.person.image == null && c.character.image == null" src="views\default\default_person.png" height="120" width="90"/>
+   														<img ng-if="c.character.image == null && c.person.image != null" src="{{c.person.image.medium}}" height="120" width="90"/>
+   														<img ng-if="c.character.image != null" src="{{c.character.image.medium}}" height="120" width="90"/>
+													</div>
+													<div class="col-xs-3 col-sm-9">
+														<h3 style="color:darkcyan"> {{c.person.name}} </h3>
+														as
+														<h4 style="color:darkcyan"> {{c.character.name}} </h4> <br/>
+													</div>
+												</div>
+											</div>
+										</div>	
+									</div>	
+								</div>
+							</div>
+						</div>
+					</div>
+			</div>	
+</div>			
+						
+

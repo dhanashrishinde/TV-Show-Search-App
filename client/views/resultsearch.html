@@ -1,0 +1,22 @@
+<h2 ng-if="search"> Search Result : </h2>
+		<div class="row"  ng-repeat="s in search" >
+            <div class="col-xs-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" >
+                        <div class="panel-title" >
+                        	<div class="row" >
+								<div class="col-xs-3 col-sm-3">
+									<img src="{{s.show.image.medium}}"/>
+									<img ng-if="s.show.image.medium == null" src="views\default\default_show.png" height="294" width="200"/>
+								</div>
+								<div class="col-xs-3 col-sm-9">
+									<h3> {{s.show.name}} </h3> <br/>
+									<p style="font-size:100%" ng-bind-html='s.show.summary | trustHTML'></p>
+									<a href = "/show/{{s.show.id}}" class = "btn btn-warning">Details</a>
+								</div>
+							</div>
+						</div>
+					</div>	
+				</div>	
+			</div>
+		</div>
